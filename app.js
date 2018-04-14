@@ -33,24 +33,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//Session-MongoDB Middleware
-// var store = new MongoDBStore(
-//       {
-//         uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
-//         databaseName: 'connect_mongodb_session_test',
-//         collection: 'mySessions'
-//       });
-//
-//     // Catch errors
-//     store.on('error', function(error) {
-//       assert.ifError(error);
-//       assert.ok(false);
-//     });
+Session-MongoDB Middleware
+var store = new MongoDBStore(
+      {
+        uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+        databaseName: 'connect_mongodb_session_test',
+        collection: 'mySessions'
+      });
+
+    // Catch errors
+    store.on('error', function(error) {
+      assert.ifError(error);
+      assert.ok(false);
+    });
 //Express session Middleware
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  //store: store,
+  store: store,
   saveUninitialized: false,
   //cookie: { secure: true }
 }))
