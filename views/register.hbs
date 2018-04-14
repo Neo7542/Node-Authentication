@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>LoginApp</title>
+  	<link rel="stylesheet" href="/css/bootstrap.css" />
+  	<link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    {{> navbar}}
+    <div class="container">
+      {{#if error}}
+        {{#each error}}
+        <div class="alert alert-danger">{{this.msg}}</div>
+        {{/each}}
+      {{/if}}
+    <h2 class="page-header">Account Register</h2>
+        <form method="post" action="/users/register">
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+  </body>
+</html>
